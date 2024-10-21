@@ -1,0 +1,62 @@
+{% extends 'AdminHomeindex.html' %}
+{% block body %}
+<body>
+<form action="/AI_menu/Add_staff_post/"method="post"enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center"class="table table-bordered">
+        <tr><th>Name</th>
+        <td><input type="text" name="staffname"class="form-control"pattern="[A-Z /a-z]+"required></td></tr>
+        <tr>
+            <th>Gender</th>
+            <td><select name="gender" class="form-control"required>
+                <option name=""value="">Select</option>
+                <option name="Male"value="Male">Male</option>
+                <option name="Female"value="Female">Female</option>
+                <option name="Others"value="Others">Others</option>
+            </select>
+</td>
+        </tr>
+        <tr>
+            <th>Dob</th>
+            <td><input type="date"name="dob"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input type="number"name="phone"class="form-control"pattern="[0-9]"required></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input type="email"name="email"class="form-control"pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"required></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td><input type="text"name="place"class="form-control"pattern="[A-Z /a-z]+"required></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td><input type="text"name="city"class="form-control"pattern="[A-Z /a-z]+"required></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td><input type="text"name="district"class="form-control"pattern="[A-Z /a-z]+"required></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td><input type="file"name="photo"class="form-control"required></td>
+        </tr><tr>
+            <th>Type</th>
+        <td><select name="type"class="form-control"required>
+            <option value="">Select</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="ServiceStation">Service Station</option>
+            <option value="Cashier">Cashier</option>
+            <option value="Staff">Staff</option>
+        </select></td>
+        </tr>
+        <tr>
+            <td align="center"colspan="2"><input type="submit"value="Add"class="btn btn-outline-success"></td>
+        </tr>
+    </table>
+</form>
+</body>
+{% endblock %}

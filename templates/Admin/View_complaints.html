@@ -1,0 +1,39 @@
+{% extends 'AdminHomeindex.html' %}
+{% block body %}
+<body>
+<form method="post"action="/AI_menu/Search_complaints/">
+{% csrf_token %}
+    <table align="center"class="table table-bordered">
+        <tr>
+            <th>From</th>
+            <td><input type="date"name="from"class="form-control"placeholder="From"required></td>
+            <th>To</th>
+            <td>
+               <input type="date"name="to"class="form-control"placeholder="To"required>
+            </td>
+        <td><input type="submit"value="Search"class="btn btn-outline-warning"></td></tr>
+    </table>
+    <table align="center"class="table table-bordered">
+        <tr style="background-color:#ffc945 ">
+            <th>Sl.no</th>
+            <th>Username</th>
+            <th>Complaints</th>
+            <th>Date and Time</th>
+            <th>Status</th>
+            <th>Reply</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.CUSTOMER.name }}</td>
+            <td>{{ i.complaints }}</td>
+            <td>{{ i.date }}<br>{{ i.time }}</td>
+            <td>{{ i.status }}</td>
+            <td>{{ i.reply }}</td>
+            <td><a href="/AI_menu/Send_Reply/{{ i.id }}#hello"class="btn btn-outline-success">Reply</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+</body>
+{% endblock %}

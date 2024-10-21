@@ -1,0 +1,29 @@
+{% extends 'AdminHomeindex.html' %}
+{% block body %}
+<body>
+<form action="/AI_menu/Edit_Menu_post/"method="post"enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center"class="table table-bordered">
+        <tr>
+            <input type="hidden"name="id1"value="{{ data.id }}">
+            <th>Item name</th>
+            <td><input type="text"name="itemname"value="{{ data.item_name }}"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td><img src="{{ data.photo }}"height="100px"width="100px"></td>
+            <td><input type="file"name="photo"value="{{ data.photo }}"class="form-control"></td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td><textarea name="description"class="form-control"required>{{ data.description }}</textarea></td>
+        </tr>
+        <tr><th>Price</th>
+        <td><input type="number"name="price" value="{{ data.price }}"class="form-control"required></td></tr>
+        <tr>
+            <td align="center"colspan="2"><input type="submit"value="Update"class="btn btn-outline-success"></td>
+        </tr>
+    </table>
+</form>
+</body>
+{% endblock %}

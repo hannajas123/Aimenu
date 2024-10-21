@@ -1,0 +1,36 @@
+{% extends 'AdminHomeindex.html' %}
+{% block body %}
+<body>
+<form action="/AI_menu/Search_Tdyscpcl_post/"method="post"enctype="multipart/form-data">
+    {% csrf_token %}<table align="center"class="table table-bordered">
+    <tr>
+        <td><input type="text"name="search"class="form-control"required></td>
+        <td><input type="submit"value="Search"class="btn btn-outline-warning"></td>
+    </tr>
+</table>
+{% for i in data %}
+    <table align="center"class="table table-bordered">
+        <tr>
+            <td align="center"colspan="2"><img src="{{ i.MENU.photo }}"height="150px"width="150px"></td>
+        </tr>
+        <tr>
+           <th>Item name</th>
+            <td>{{ i.MENU.item_name }}</td>
+        </tr>
+        <tr>
+           <th>Description</th>
+            <td>{{ i.MENU.description }}</td>
+        </tr>
+                <tr>
+           <th>Price</th>
+            <td>{{ i.MENU.price }}</td>
+        </tr>
+        <tr>
+            <td><a href="/AI_menu/Edit_Tdyscpcl/{{ i.id }}#hello"class="btn btn-outline-success">Edit</a> </td>
+            <td><a href="/AI_menu/Delete_Tdyscpcl_post/{{ i.id }}"class="btn btn-outline-danger">Delete</a> </td>
+        </tr>
+    </table>
+{% endfor %}
+</form>
+</body>
+{% endblock %}

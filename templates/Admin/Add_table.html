@@ -1,0 +1,18 @@
+{% extends 'AdminHomeindex.html' %}
+{% block body %}
+<body>
+<form action="/AI_menu/Add_Table_post/"method="post">
+    {% csrf_token %}
+    <table align="center"class="table table-bordered">
+    <tr>
+        <th>Table No.</th>
+        <td><input type="number"name="tabno"class="form-control"required></td>
+    </tr>
+        <tr>
+        <th>No.of Seats</th>
+        <td><input type="number"name="seats"class="form-control"required></td>
+    </tr>
+    <tr><td align="center"colspan="2"><input type="submit"value="Add"class="btn btn-outline-success"></td></tr>
+</table></form>
+</body>
+{% endblock %}

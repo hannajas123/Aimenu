@@ -1,0 +1,33 @@
+{% extends 'AdminHomeindex.html' %}
+{% block body %}
+<body>
+<form action="/AI_menu/Search_Menu_post/"method="post"enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center"class="table table-bordered">
+    <tr>
+        <td><input type="text"name="search"class="form-control"required></td>
+        <td><input type="submit"value="Search"class="btn btn-outline-warning"></td>
+    </tr>
+</table>
+<table align="center"class="table table-bordered">
+    <tr style="background-color:#ffc945 ">
+        <th>Sl.No</th>
+        <th>Item Name</th>
+        <th>Photo</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.item_name }}</td>
+        <td><img src="{{ i.photo }}"width="100px"height="100px"></td>
+        <td>{{ i.description }}</td>
+        <td>{{ i.price }}</td>
+        <td><a href="/AI_menu/Edit_Menu/{{ i.id }}#hello"class="btn btn-outline-success">Edit</a> </td>
+        <td><a href="/AI_menu/Delete_Menu_post/{{ i.id }}"class="btn btn-outline-danger">Delete</a> </td>
+    </tr>
+    {% endfor %}
+</table></form>
+</body>
+{% endblock %}

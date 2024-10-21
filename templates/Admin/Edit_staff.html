@@ -1,0 +1,65 @@
+{% extends 'AdminHomeindex.html' %}
+{% block body %}
+<body>
+<form action="/AI_menu/Edit_staff_post/"method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    <table align="center"class="table table-bordered">
+        <tr><input type="hidden"name="id1"value="{{ data.id }}">
+            <th>Name</th>
+        <td><input type="text" name="staffname"value="{{ data.name }}"class="form-control"required></td></tr>
+        <tr>
+            <th>Gender</th>
+            <td><select name="gender" class="form-control"required>
+                <option hidden value="{{ data.gender }}">{{ data.gender }}</option>
+                <option name=""value="">Select</option>
+                <option name="Male"value="Male">Male</option>
+                <option name="Female"value="Female">Female</option>
+                <option name="Others"value="Others">Others</option>
+            </select>
+        </tr>
+        <tr>
+            <th>Dob</th>
+            <td><input type="date"name="dob"value="{{ data.dob|date:"Y-m-d"  }}"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input type="number"name="phone"value="{{ data.phone }}"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input type="email"name="email"value="{{ data.email }}"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td><input type="text"name="place"value="{{ data.place}}"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td><input type="text"name="city"value="{{ data.city }}"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>District</th>
+            <td><input type="text"name="district"value="{{ data.district }}"class="form-control"required></td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td><img src="{{ data.photo }}"width="100px"height="100px"><br>
+            <input type="file"name="photo"class="form-control"></td>
+        </tr>
+    <tr>
+            <th>Type</th>
+        <td><select name="type" class="form-control"required>
+            <option hidden value="{{ data.type }}">{{ data.type }}</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="ServiceStation">Service Station</option>
+            <option value="Cashier">Cashier</option>
+            <option value="Staff">Staff</option>
+        </select></td>
+        </tr>
+        <tr>
+            <td align="center"colspan="2"><input type="submit"value="Update"class="btn btn-outline-success"></td>
+        </tr>
+    </table>
+</form>
+</body>
+{% endblock %}
